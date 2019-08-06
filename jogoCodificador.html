@@ -1,0 +1,22 @@
+<html>
+<header></header>
+
+<body>
+    <input id="mensagem" type="text">
+    <button id="codificar-texto" type="submit" onclick="codificarMensagem()">Codificar!</button>
+    <label>Mensagem Codificada:</label>
+    <p id="resposta-codificada"></p>
+</body>
+
+<script>
+
+function codificarMensagem() {
+    var inputElemento = document.getElementById("mensagem");
+    var mensagem = inputElemento.value;
+    var mensagemCodificada = mensagem;
+    document.getElementById("resposta-codificada").innerText = mensagemCodificada;
+}
+
+</script>
+
+</html>
