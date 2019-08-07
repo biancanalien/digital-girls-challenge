@@ -2,21 +2,36 @@
 <header></header>
 
 <body>
-    <input id="mensagem" type="text">
-    <button id="codificar-texto" type="submit" onclick="codificarMensagem()">Codificar!</button>
-    <label>Mensagem Codificada:</label>
-    <p id="resposta-codificada"></p>
+    <div>
+        <input id="mensagem" type="text">
+        <button id="codificar-texto" type="submit" onclick="codificarMensagem()">Codificar!</button>
+    </div>
+    <div>
+        <label>Mensagem Codificada:</label>
+        <p id="resposta-codificada"></p>
+    </div>
 </body>
 
 <script>
+    function codificarMensagem() {
+        //Alfabeto = "abcdefghijklmnopqrstuvwxyz";
+        //Alfabeto Codificado = "nopqrstuvwxyzabcdefghijklm";
+        var inputElemento = document.getElementById("mensagem");
+        var mensagem = inputElemento.value.toLowerCase();
+        var mensagemCodificada = "";
+        var index = 0;
 
-function codificarMensagem() {
-    var inputElemento = document.getElementById("mensagem");
-    var mensagem = inputElemento.value;
-    var mensagemCodificada = mensagem;
-    document.getElementById("resposta-codificada").innerText = mensagemCodificada;
-}
+        for (var i = 0; i < mensagem.length; i++) {
+            var posicaoDaLetraNoAlfabeto = mensagem.charCodeAt(i);
+            var letraComDeslocamento = posicaoDaLetraNoAlfabeto + 13;
+            if (posicaoDaLetraNoAlfabeto > 109) {
+                letraComDeslocamento = letraComDeslocamento - 26;
+            }
+            mensagemCodificada += String.fromCharCode(letraComDeslocamento);
+        }
 
+        document.getElementById("resposta-codificada").innerText = mensagemCodificada;
+    }
 </script>
 
 </html>
