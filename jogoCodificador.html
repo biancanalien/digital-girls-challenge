@@ -23,9 +23,10 @@
         var mensagemCodificada = "";
         var index = 0;
 
-        for (var i = 0; i < mensagem.length; i++) {
-            var posicaoDaLetraNoAlfabeto = mensagem.charCodeAt(i);
+        for (var index = 0; index < mensagem.length; index++) {
+            var posicaoDaLetraNoAlfabeto = mensagem.charCodeAt(index);
             var letraComDeslocamento = posicaoDaLetraNoAlfabeto + 13;
+            //Ultima letra do alfabeto (z)
             if (posicaoDaLetraNoAlfabeto > 109) {
                 letraComDeslocamento = letraComDeslocamento - 26;
             }
