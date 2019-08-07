@@ -1,0 +1,59 @@
+<html>
+<header></header>
+
+<body>
+    <h1>Vamos jogar!</h1>
+    <p>Nesse jogo você terá 3 tentativas para adivinhar o número que eu estou pensando.</p>
+    <p>Quantidade de tentativas restantes: <span id="quantidade-tentativa-restante">3</span></p>
+    <h4>Qual número você acha que eu estou pensando?</h4>
+    <input type="text" id="numero-sugerido" />
+    <button type="submit" onclick="verificarNumero()">Adivinhar</button>
+    <h1 id="resposta"></h1>
+</body>
+<script>
+    var numeroSorteado = gerarNumeroAleatorio(1, 10);
+    console.log("numeroSorteado", numeroSorteado);
+
+    function verificarNumero() {
+        var inputElemento = document.getElementById("numero-sugerido");
+        var numeroSugeridoTexto = inputElemento.value;
+        var numeroSugeridoNumerico = parseInt(numeroSugeridoTexto);
+
+        if (numeroSugeridoNumerico == numeroSorteado) {
+            var respostaElemento = document.getElementById("resposta");
+            respostaElemento.innerText = "PARABÉNS! Você adivinhou o número sorteado. Tente outro!";
+            var quantidadeTentativaElemento = document.getElementById("quantidade-tentativa-restante");
+            document.getElementById("numero-sugerido").value = "";
+            quantidadeTentativaElemento.innerText = 3;
+            numeroSorteado = gerarNumeroAleatorio(1, 10);
+            console.log("numeroSorteado", numeroSorteado);
+        } else {
+
+            var quantidadeTentativaElemento = document.getElementById("quantidade-tentativa-restante");
+            var quantidadeTentativaTexto = quantidadeTentativaElemento.innerText;
+            var quantidadeTentativaNumerico = parseInt(quantidadeTentativaTexto);
+            var novaQuantidadeTentativa = quantidadeTentativaNumerico - 1;
+
+            if (novaQuantidadeTentativa == 0) {
+                var respostaElemento = document.getElementById("resposta");
+                respostaElemento.innerText = "Esgotaram todas as suas chances! O número correto era " + numeroSorteado + ". Mas tudo bem! Tente de novo :)";
+                var quantidadeTentativaElemento = document.getElementById("quantidade-tentativa-restante");
+                quantidadeTentativaElemento.innerText = 3;
+                document.getElementById("numero-sugerido").value = "";
+                numeroSorteado = gerarNumeroAleatorio(1, 10);
+                console.log("numeroSorteado", numeroSorteado);
+            } else {
+                var respostaElemento = document.getElementById("resposta");
+                respostaElemento.innerText = "Não, não é esse número :( ";
+                quantidadeTentativaElemento.innerText = novaQuantidadeTentativa.toString();
+            }
+
+        }
+    }
+
+    function gerarNumeroAleatorio(min, max) {
+        return parseInt(Math.random() * (max - min) + min);
+    }
+</script>
+
+</html>
