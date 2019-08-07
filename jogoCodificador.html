@@ -3,11 +3,13 @@
 
 <body>
     <div>
-        <input id="mensagem" type="text">
-        <button id="codificar-texto" type="submit" onclick="codificarMensagem()">Codificar!</button>
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem"></textarea>
     </div>
+    <button id="codificar-texto" type="submit" onclick="codificarMensagem()">Codificar</button>
+    <button id="limpar-texto" type="submit" onclick="limparMensagem()">Limpar</button>
     <div>
-        <label>Mensagem Codificada:</label>
+        <label for="resposta-codificada">Mensagem Codificada:</label>
         <p id="resposta-codificada"></p>
     </div>
 </body>
@@ -31,6 +33,11 @@
         }
 
         document.getElementById("resposta-codificada").innerText = mensagemCodificada;
+    }
+
+    function limparMensagem() {
+        document.getElementById("resposta-codificada").innerText = "";
+        document.getElementById("mensagem").value = "";
     }
 </script>
 
