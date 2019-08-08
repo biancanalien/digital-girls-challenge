@@ -1,0 +1,35 @@
+<html>
+<header></header>
+
+<body>
+    <button type="submit" onclick="verificarPedra()">Pedra</button>
+    <button type="submit" onclick="verificarPapel()">Papel</button>
+    <button type="submit" onclick="verificarTesoura()">Tesoura</button>
+    <h3 id="apostas"></h3>
+    <h3 id="resposta"></h3>
+</body>
+<script>
+    var ferramentas = ["Pedra", "Papel", "Tesoura"];
+    var ferramentaComputador = gerarFerramentaComputador(0, 2);
+
+    function gerarFerramentaComputador() {
+        var index = parseInt(Math.random() * (max - min) + min);
+        return ferramentas[index];
+    }
+
+    function verificarPedra() {
+        var apostasElemento = document.getElementById("apostas");
+        apostasElemento.innerText = "Você escolheu Pedra e eu escolhi " + ferramentaComputador + "... ";
+
+        var respostaElemento = document.getElementById("resposta");
+        if (ferramentaComputador == "Pedra") {
+            respostaElemento.innerText = "Ops! Empatamos.";
+        } else if (ferramentaComputador == "Papel") {
+            respostaElemento.innerText = "Yay! Ganhei!";
+        } else if (ferramentaComputador == "Tesoura") {
+            respostaElemento.innerText = "Ok... você ganhou :( ";
+        }
+    }
+</script>
+
+</html>
