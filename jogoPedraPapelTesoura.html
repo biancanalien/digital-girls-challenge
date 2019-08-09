@@ -2,6 +2,8 @@
 <header></header>
 
 <body>
+    <h1>PEDRA - PAPEL - TESOURA</h1>
+    <h2>Pedra quebra tesoura. Tesoura corta papel. Papel embrulha pedra.</h2>
     <button type="submit" onclick="verificarPedra()">Pedra</button>
     <button type="submit" onclick="verificarPapel()">Papel</button>
     <button type="submit" onclick="verificarTesoura()">Tesoura</button>
@@ -10,14 +12,18 @@
 </body>
 <script>
     var ferramentas = ["Pedra", "Papel", "Tesoura"];
-    var ferramentaComputador = gerarFerramentaComputador(0, 2);
 
     function gerarFerramentaComputador() {
+        var min = 0;
+        var max = 3;
         var index = parseInt(Math.random() * (max - min) + min);
+        console.log("index", index);
         return ferramentas[index];
     }
 
     function verificarPedra() {
+        var ferramentaComputador = gerarFerramentaComputador();
+
         var apostasElemento = document.getElementById("apostas");
         apostasElemento.innerText = "Você escolheu Pedra e eu escolhi " + ferramentaComputador + "... ";
 
@@ -27,6 +33,36 @@
         } else if (ferramentaComputador == "Papel") {
             respostaElemento.innerText = "Yay! Ganhei!";
         } else if (ferramentaComputador == "Tesoura") {
+            respostaElemento.innerText = "Ok... você ganhou :( ";
+        }
+    }
+
+    function verificarPapel() {
+        var ferramentaComputador = gerarFerramentaComputador();
+        var apostasElemento = document.getElementById("apostas");
+        apostasElemento.innerText = "Você escolheu Papel e eu escolhi " + ferramentaComputador + "... ";
+
+        var respostaElemento = document.getElementById("resposta");
+        if (ferramentaComputador == "Papel") {
+            respostaElemento.innerText = "Ops! Empatamos.";
+        } else if (ferramentaComputador == "Tesoura") {
+            respostaElemento.innerText = "Yay! Ganhei!";
+        } else if (ferramentaComputador == "Pedra") {
+            respostaElemento.innerText = "Ok... você ganhou :( ";
+        }
+    }
+
+    function verificarTesoura() {
+        var ferramentaComputador = gerarFerramentaComputador();
+        var apostasElemento = document.getElementById("apostas");
+        apostasElemento.innerText = "Você escolheu Tesoura e eu escolhi " + ferramentaComputador + "... ";
+
+        var respostaElemento = document.getElementById("resposta");
+        if (ferramentaComputador == "Tesoura") {
+            respostaElemento.innerText = "Ops! Empatamos.";
+        } else if (ferramentaComputador == "Pedra") {
+            respostaElemento.innerText = "Yay! Ganhei!";
+        } else if (ferramentaComputador == "Papel") {
             respostaElemento.innerText = "Ok... você ganhou :( ";
         }
     }
