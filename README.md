@@ -1,1 +1,2 @@
-# digital-girls-challenge
+# Digital Girls
+

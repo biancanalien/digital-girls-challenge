@@ -1,0 +1,35 @@
+<html>
+
+<body>
+    <h1 id="mensagem-boas-vindas">Seja bem-vinda ao meu site!</h1>
+    <p>Oi, eu sou a Bete</p>
+    <img src="https://cdn.yjc.ir/files/fa/news/1395/2/21/4505243_297.jpg" />
+    <button onclick="mostrarDoce()">
+        meu doce favorito
+    </button>
+</body>
+<style>
+    body {
+        background-color: steelblue;
+    }
+
+    h1 {
+        color: chocolate;
+        text-align: center;
+    }
+</style>
+<script>
+    var temBrigadeiro;
+    var temSorvete;
+    temBrigadeiro = prompt("Tem brigadeiro na geladeira?");
+    temSorvete = prompt("Tem sorvete na geladeira?");
+    if (temBrigadeiro == "sim") {
+        alert("UHULL! 🥳");
+    } else if (temSorvete == "sim") {
+        alert("UHULL! 😋");
+    } else {
+        alert("Ahhh, não tem mais nada pra comer. 😭");
+    }
+</script>
+
+</html>

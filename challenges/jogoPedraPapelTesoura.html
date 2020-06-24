@@ -1,71 +1,106 @@
 <html>
-<header></header>
 
 <body>
     <h1>PEDRA - PAPEL - TESOURA</h1>
-    <h2>Pedra quebra tesoura. Tesoura corta papel. Papel embrulha pedra.</h2>
-    <button type="submit" onclick="verificarPedra()">Pedra</button>
-    <button type="submit" onclick="verificarPapel()">Papel</button>
-    <button type="submit" onclick="verificarTesoura()">Tesoura</button>
-    <h3 id="apostas"></h3>
-    <h3 id="resposta"></h3>
+    <p>Pedra quebra tesoura. Tesoura corta papel. Papel embrulha pedra.</p>
+
+    <p id="jogador1">Jogador 1</p>
+    <button onclick="salvarPedraJogador1()">Pedra</button>
+    <button onclick="salvarPapelJogador1()">Papel</button>
+    <button onclick="salvarTesouraJogador1()">Tesoura</button>
+
+    <p id="jogador2">Jogador 2</p>
+    <button onclick="salvarPedraJogador2()">Pedra</button>
+    <button onclick="salvarPapelJogador2()">Papel</button>
+    <button onclick="salvarTesouraJogador2()">Tesoura</button>
+
+    <p>Verificar quem eh o vencedor</p>
+    <button onclick="verificarGanhador()">Verificar ganhador</button>
+
 </body>
 <script>
-    var ferramentas = ["Pedra", "Papel", "Tesoura"];
+    var escolhaJogador1 = "";
+    var escolhaJogador2 = "";
 
-    function gerarFerramentaComputador() {
-        var min = 0;
-        var max = 3;
-        var index = parseInt(Math.random() * (max - min) + min);
-        console.log("index", index);
-        return ferramentas[index];
+    function salvarPedraJogador1() {
+        escolhaJogador1 = "Pedra";
+        alert("Jogada salva!");
     }
 
-    function verificarPedra() {
-        var ferramentaComputador = gerarFerramentaComputador();
-
-        var apostasElemento = document.getElementById("apostas");
-        apostasElemento.innerText = "Você escolheu Pedra e eu escolhi " + ferramentaComputador + "... ";
-
-        var respostaElemento = document.getElementById("resposta");
-        if (ferramentaComputador == "Pedra") {
-            respostaElemento.innerText = "Ops! Empatamos.";
-        } else if (ferramentaComputador == "Papel") {
-            respostaElemento.innerText = "Yay! Ganhei!";
-        } else if (ferramentaComputador == "Tesoura") {
-            respostaElemento.innerText = "Ok... você ganhou :( ";
-        }
+    function salvarPapelJogador1() {
+        escolhaJogador1 = "Papel";
+        alert("Jogada salva!");
     }
 
-    function verificarPapel() {
-        var ferramentaComputador = gerarFerramentaComputador();
-        var apostasElemento = document.getElementById("apostas");
-        apostasElemento.innerText = "Você escolheu Papel e eu escolhi " + ferramentaComputador + "... ";
-
-        var respostaElemento = document.getElementById("resposta");
-        if (ferramentaComputador == "Papel") {
-            respostaElemento.innerText = "Ops! Empatamos.";
-        } else if (ferramentaComputador == "Tesoura") {
-            respostaElemento.innerText = "Yay! Ganhei!";
-        } else if (ferramentaComputador == "Pedra") {
-            respostaElemento.innerText = "Ok... você ganhou :( ";
-        }
+    function salvarTesouraJogador1() {
+        escolhaJogador1 = "Tesoura";
+        alert("Jogada salva!");
     }
 
-    function verificarTesoura() {
-        var ferramentaComputador = gerarFerramentaComputador();
-        var apostasElemento = document.getElementById("apostas");
-        apostasElemento.innerText = "Você escolheu Tesoura e eu escolhi " + ferramentaComputador + "... ";
+    function salvarPedraJogador2() {
+        escolhaJogador2 = "Pedra";
+        alert("Jogada salva!");
+    }
 
-        var respostaElemento = document.getElementById("resposta");
-        if (ferramentaComputador == "Tesoura") {
-            respostaElemento.innerText = "Ops! Empatamos.";
-        } else if (ferramentaComputador == "Pedra") {
-            respostaElemento.innerText = "Yay! Ganhei!";
-        } else if (ferramentaComputador == "Papel") {
-            respostaElemento.innerText = "Ok... você ganhou :( ";
+    function salvarPapelJogador2() {
+        escolhaJogador2 = "Papel";
+        alert("Jogada salva!");
+    }
+
+    function salvarTesouraJogador2() {
+        escolhaJogador2 = "Tesoura";
+        alert("Jogada salva!");
+    }
+
+    function verificarGanhador() {
+        if (escolhaJogador1 == escolhaJogador2) {
+            alert("Empatou!");
         }
+
+        else if (escolhaJogador1 == "Pedra") {
+            if (escolhaJogador2 == "Tesoura") {
+                alert("Jogador 1 ganhou!");
+            } else {
+                alert("Jogador 2 ganhou!");
+            }
+        }
+
+        else if (escolhaJogador1 == "Papel") {
+            if (escolhaJogador2 == "Pedra") {
+                alert("Jogador 1 ganhou!");
+            } else {
+                alert("Jogador 2 ganhou!");
+            }
+        }
+
+        else if (escolhaJogador1 == "Tesoura") {
+            if (escolhaJogador2 == "Papel") {
+                alert("Jogador 1 ganhou!");
+            } else {
+                alert("Jogador 2 ganhou!");
+            }
+        }
+
     }
 </script>
+<style>
+    body {
+        background-color: #f1c232;
+        text-align: center;
+    }
+
+    h1 {
+        color: #cc0000;
+    }
+
+    button {
+        border-width: 1px;
+        border-color: white;
+        border-style: solid;
+        background-color: #cc0000;
+        color: white;
+        height: 30px;
+    }
+</style>
 
 </html>
